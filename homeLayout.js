@@ -148,6 +148,12 @@ setTimeout(function() {
 		    margin: 0 auto;
 		    line-height: 24px;
 		}
+		@media screen and (max-width: 1023px) {
+			.csh-wrapper {
+				width: 100%;
+				max-width: 100%;
+			}
+		}
 
 	</style>`;
     document.querySelectorAll('head')[0].insertAdjacentHTML('beforeend', css);
