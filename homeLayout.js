@@ -2,6 +2,18 @@ setTimeout(function() {
 		// Inject style
 
 	var css = `<style type="text/css">
+		.csh-home section .csh-home-list li a .csh-home-list-image {
+			background-size: 64px auto;
+		}
+		.csh-home section .csh-home-list {
+			text-align: left;
+		}
+		.csh-home section .csh-home-list li {
+			text-align: center;
+		}
+		.csh-home section .csh-home-list .sb-custom-cat-header {
+			text-align: center;
+		}
 		.csh-wrapper {
 			width: 1024px;
 			max-width: 1024px;
@@ -107,6 +119,36 @@ setTimeout(function() {
     		border: 1px solid rgba(188,198,208,.7);
 		}
 
+		.sb-custom-cat-header {
+			margin-bottom: 32px;
+    		margin-top: 44px;
+    		padding-top: 60px;
+    		position: relative;
+		}
+
+		.sb-custom-cat-header::after {
+			content: "";
+    		width: 50%;
+    		height: 1px;
+    		background: #ddd;
+    		position: absolute;
+    		top: 0;
+    		z-index: 999;
+    		transform: translate(-50%, 0);
+		}
+
+		.sb-custom-cat-header h4 {
+			font-size: 23px;
+    		margin-bottom: 16px;
+		}
+
+		.sb-custom-cat-header p {
+			font-size: 16px;
+		    max-width: 600px;
+		    margin: 0 auto;
+		    line-height: 24px;
+		}
+
 	</style>`;
     document.querySelectorAll('head')[0].insertAdjacentHTML('beforeend', css);
 
@@ -135,70 +177,48 @@ setTimeout(function() {
 
 	elToTargetHeroBg.insertAdjacentHTML('beforebegin', heroBg);
 
-	// Inject get started
-	var elToTargetGetStarted = document.querySelectorAll('section[data-type="frequently_read"]')[0];
-	var getStarted = `
-	<div class="sb-get-started">
-		<header>
-			<h4>Get Started</h4>
-			<p>Are you setting up your drop-shipping or print-on-demand store for the first time? Here's all the information you'll need.</p>
-		</header>
-		<div class="sb-get-started-content">
-			<div class="sb-get-started-item">
-				<h4>ShopBase</h4>
-				<p>
-				  ShopBase is the cross-border eCommerce platform specialized for Dropshipping, 
-				  Print on Demand, and White Label businesses. This checklist outlines all the 
-				  necessary steps that you need to take to get your store ready & start selling 
-				  in the quickest way possible with ShopBase
-				</p>
-				<a href="#" class="sb-get-started-item-btn">
-					Get Started With ShopBase
-				</a>
-			</div>
-
-			<div class="sb-get-started-item">
-				<h4>PrintBase</h4>
-				<p>
-				  PrintBase is an all-in-one platform specialized in print on demand services: 
-				  from helping merchants to create online stores, fulfilling products, to providing 
-				  the payment gateway and customer service. This checklist outlines all the necessary 
-				  steps that you need to take to get your store ready & start selling in the quickest 
-				  way possible with ShopBase
-				</p>
-				<a href="#" class="sb-get-started-item-btn">
-					Get Started With PrintBase
-				</a>
-			</div>
-
-			<div class="sb-get-started-item">
-				<h4>Community</h4>
-				<p>
-				  Looking for ShopBase product how-tos, peer support, community discussion and thought 
-				  leadership on eCommerce best practices? Here's where you should go!
-				</p>
-				<a href="#" class="sb-get-started-item-btn btn-outline">
-					Join Vietnam Community
-				</a>
-				<a href="#" class="sb-get-started-item-btn">
-					Join Our International Community
-				</a>
-			</div>
-
-
-			<div class="sb-get-started-item">
-				<h4>Request sales support</h4>
-				<p>
-				  Wanna have 1-on-1 support in setting up your new ShopBase or PrintBase store? Let us know!
-				</p>
-				<a href="#" class="sb-get-started-item-btn">
-					Request a sales call
-				</a>
-			</div>
-
-		</div>
-	</div>
-	`;
-
-	elToTargetGetStarted.insertAdjacentHTML('beforebegin', getStarted);
+	// Inject slice list categories
+	var listCategoriesData = [
+	  {
+	  	title: `Get Started`,
+	  	description: `Are you setting up your drop-shipping or print-on-demand store for the first time? Here's all the information you'll need.`,
+	  	catIndex: [0,1,2,3,4],
+	  },	
+	  {
+	  	title: `Customize your storefront`,
+	  	description: `You had a fully functional store created already, it’s time to make your store look greater & have a sense of your brand in it. Let’s learn how to customize your ShopBase / PrintBase storefront on your preference.`,
+	  	catIndex: [5,6,7,8],
+	  },
+	  {
+	  	title: `Manage your store`,
+	  	description: `Organize and manage everything behind, from your domains, payments,  products, orders  and fulfillment process`,
+	  	catIndex: [9,10,11,12,13],
+	  },
+	  {
+	  	title: `Promote your store`,
+	  	description: `Organize and manage everything behind, from your domains, payments,  products, orders  and fulfillment process`,
+	  	catIndex: [14,15,16,17],
+	  },
+	  {
+	  	title: `Increase your store's conversion rate`,
+	  	description: `Converting your website visitors into loyal customers who pay (multiple times) for your products is what you want to do next. Let’s discover how to boost your store's conversion rate.`,
+	  	catIndex: [18,19],
+	  },
+	  {
+	  	title: `Join Our Programs`,
+	  	description: `Don’t hesitate to take part in our programs and let us build a thriving eCommerce community together`,
+	  	catIndex: [20,21,22],
+	  },
+	  {
+	  	title: '',
+	  	description: '',
+	  	catIndex: [23],
+	  },
+	  
+	];
+	document.querySelectorAll('.csh-home .csh-home-list-large li').length
+	listCategoriesData.map(function(item) {
+	  var index = item.catIndex[0];
+	  document.querySelectorAll('.csh-home .csh-home-list-large li')[index].insertAdjacentHTML("beforebegin", `<div class="sb-custom-cat-header"><h4>${item.title}</h4><p>${item.description}</p></div>`);
+	});
 }, 100);
