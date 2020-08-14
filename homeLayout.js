@@ -1,4 +1,5 @@
-// Inject style
+setTimeout(function() {
+		// Inject style
 
 	var css = `<style type="text/css">
 		.csh-wrapper {
@@ -200,3 +201,4 @@
 	`;
 
 	elToTargetGetStarted.insertAdjacentHTML('beforebegin', getStarted);
+}, 100);
