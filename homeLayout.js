@@ -216,7 +216,7 @@ setTimeout(function() {
 	  	catIndex: [20,21,22],
 	  },
 	  {
-	  	title: '',
+	  	title: 'Other',
 	  	description: '',
 	  	catIndex: [23],
 	  },
